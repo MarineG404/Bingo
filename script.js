@@ -23,7 +23,7 @@ function generateForm(event) {
 	form.id = 'bingo-form';
 	form.className = 'bingo-form';
 	form.style.display = 'grid';
-	form.style.gridTemplateColumns = `repeat(${size}, auto)`;
+	form.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
 
 	const centerRow = Math.floor(size / 2);
 	const centerCol = Math.floor(size / 2);

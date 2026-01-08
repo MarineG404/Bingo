@@ -26,9 +26,7 @@ body {
 	flex-direction: column;
 	font-size: 18px;
 	align-items: center;
-	height: 100vh;
-
-	color: var(--text);
+	min-height: 100vh;
 }
 
 h2,
@@ -38,7 +36,7 @@ p {
 }
 
 h1 {
-	margin: 40px 0 40px 0;
+	margin: 40px 20px;
 	font-size: 42px;
 }
 
@@ -47,6 +45,8 @@ main {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	padding: 0 20px;
+	box-sizing: border-box;
 
 	.card {
 		background: var(--card);
@@ -55,19 +55,21 @@ main {
 		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 		box-sizing: border-box;
 		margin-bottom: 40px;
+		width: 100%;
+		max-width: 600px;
 
 		.form-section {
 			display: flex;
 			flex-direction: column;
 			gap: 16px;
 			text-align: center;
-
 			margin-bottom: 16px;
 
 			form {
 				display: flex;
 				justify-content: center;
 				gap: 12px;
+				flex-wrap: wrap;
 
 				select,
 				button {
@@ -94,8 +96,8 @@ main {
 
 			.bingo-form {
 				display: grid;
-
 				grid-gap: 10px;
+				width: 100%;
 
 				.bingo-input {
 					padding: 14px;
@@ -104,6 +106,9 @@ main {
 					border-radius: 8px;
 					text-align: center;
 					background: #fff;
+					min-width: 0;
+					width: 100%;
+					box-sizing: border-box;
 				}
 			}
 
@@ -121,11 +126,9 @@ main {
 					background-color: var(--btn-hover);
 				}
 			}
-
 		}
 	}
 }
-
 
 footer {
 	margin-top: auto;
@@ -141,6 +144,7 @@ footer {
 	border-top: 1px solid var(--border);
 	width: 100%;
 	box-sizing: border-box;
+	flex-wrap: wrap;
 
 	p {
 		margin: 0;
@@ -176,8 +180,6 @@ footer {
 	}
 }
 
-/* PDF */
-
 .pdf-container {
 	display: flex;
 	flex-direction: column;
@@ -212,6 +214,48 @@ footer {
 			justify-content: center;
 			word-break: break-word;
 			padding: 8px;
+		}
+	}
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+	h1 {
+		font-size: 32px;
+		margin: 20px;
+	}
+
+	main {
+
+		.card {
+			padding: 20px;
+
+			.bingo-section h2 {
+				font-size: 24px;
+			}
+
+			.form-section form select,
+			.form-section form button {
+				font-size: 16px;
+				padding: 10px 16px;
+			}
+
+			.bingo-section {
+
+				.bingo-input {
+					font-size: 14px;
+					padding: 8px;
+				}
+
+				.bingo-form {
+					grid-gap: 6px;
+				}
+			}
+
+			footer {
+				font-size: 14px;
+				gap: 8px;
+			}
 		}
 	}
 }
