@@ -75,7 +75,6 @@ function generatePDF() {
 
 	const clone = bingoForm.cloneNode(true);
 	clone.style.display = 'grid';
-	clone.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
 	clone.className = 'clone';
 
 	const inputs = clone.querySelectorAll('input');
