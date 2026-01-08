@@ -69,6 +69,7 @@ function generatePDF() {
 		return;
 	}
 
+	isRandom = document.getElementById('random').checked;
 	const size = getGridSize();
 	const center = Math.floor(size / 2);
 
@@ -79,6 +80,20 @@ function generatePDF() {
 
 	const inputs = clone.querySelectorAll('input');
 
+	let values = [];
+	inputs.forEach((input, index) => {
+		const row = Math.floor(index / size);
+		const col = index % size;
+		if (row !== center || col !== center) {
+			values.push(input.value || '');
+		}
+	});
+
+	if (isRandom) {
+		values = values.sort(() => Math.random() - 0.5);
+	}
+
+	let valueIndex = 0;
 	inputs.forEach((input, index) => {
 		const row = Math.floor(index / size);
 		const col = index % size;
@@ -90,7 +105,7 @@ function generatePDF() {
 			div.textContent = 'BINGO';
 			div.style.fontSize = '18px';
 		} else {
-			div.textContent = input.value || '';
+			div.textContent = values[valueIndex++];
 		}
 
 		input.replaceWith(div);
