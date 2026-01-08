@@ -59,7 +59,7 @@ if (pdfButton) {
 
 function generatePDF() {
 	if (typeof html2pdf === 'undefined') {
-		alert('html2pdf n’est pas chargé');
+		alert('html2pdf n\'est pas chargé');
 		return;
 	}
 
@@ -69,7 +69,7 @@ function generatePDF() {
 		return;
 	}
 
-	isRandom = document.getElementById('random').checked;
+	const isRandom = document.getElementById('random').checked;
 	const size = getGridSize();
 	const center = Math.floor(size / 2);
 
@@ -122,10 +122,13 @@ function generatePDF() {
 	document.body.appendChild(container);
 
 	const options = {
-		margin: 6,
+		margin: 10,
 		filename: `bingo-${Date.now()}.pdf`,
 		image: { type: 'jpeg', quality: 0.98 },
-		html2canvas: { scale: 2, useCORS: true },
+		html2canvas: {
+			scale: 3,
+			useCORS: true
+		},
 		jsPDF: { unit: 'mm', format: 'a4', orientation: 'landscape' }
 	};
 
