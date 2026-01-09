@@ -5,6 +5,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="styles.css">
+	<!-- remixicon v4.8 -->
+	<link href="https://cdn.jsdelivr.net/npm/remixicon@4.8.0/fonts/remixicon.css" rel="stylesheet">
 	<title>Bingo</title>
 </head>
 
@@ -12,8 +14,32 @@
 	<main>
 		<h1>Bingo</h1>
 
-		<section class="warning">
-			<p>⚠️ La génération de pdf est indisponible en mode paysage du smartphone</p>
+		<section class="header-container">
+
+			<section class="info">
+				<div class="icon-wrapper">
+					<i class="ri-information-line"></i>
+				</div>
+				<div class="content">
+					<p>Créez et téléchargez votre grille de bingo personnalisée au format PDF.</p>
+					<p>
+						Choisissez la taille de la grille et décidez si vous souhaitez que les cases soient mélangées
+						aléatoirement lors du téléchargement.
+					</p>
+				</div>
+			</section>
+
+			<section class="warning">
+				<div class="icon-wrapper">
+					<i class="ri-error-warning-line"></i>
+				</div>
+				<div class="content">
+					<p>La génération de pdf n'est pas encore disponible sur les navigateurs mobiles à moins de se mettre
+						en
+						mode ordinateur.</p>
+				</div>
+			</section>
+
 		</section>
 
 		<section class="card">
@@ -46,7 +72,7 @@
 	<footer>
 		<img src="avatar.svg" alt="Marine Gonnord Avatar" class="avatar">
 		<p>Made with ❤️ by <a href="https://marinegonnord.fr" target="_blank" rel="noopener noreferrer">Marine
-				Gonnord pour sa maman</a></p>
+				Gonnord</a> pour sa maman</p>
 	</footer>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
