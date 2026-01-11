@@ -1,4 +1,3 @@
-// script moved to src/js/script.js
 function getGridSize() {
 	const gridSizeInput = document.getElementById('size');
 	return parseInt(gridSizeInput.value, 10) || 5;
