@@ -34,6 +34,7 @@ function generateForm(event) {
 			input.type = 'text';
 			input.name = `cell-${r}-${c}`;
 			input.className = 'bingo-input';
+			input.maxLength = 70;
 
 			if (r === centerRow && c === centerCol) {
 				input.value = 'BINGO';
@@ -141,7 +142,21 @@ function generatePDF() {
 	const availableWidth = pageWidth - (horizontalMargin * 2);
 	const availableHeight = pageHeight - startY - 20;
 
-	const padding = size === 3 ? 12 : size === 4 ? 10 : 8;
+	const maxLength = Math.max(...values.map(v => (v || '').length), 5);
+
+	let fontSize, padding;
+
+	if (maxLength > 60) {
+		fontSize = size === 3 ? 18 : size === 4 ? 16 : 14;
+		padding = 3;
+	} else if (maxLength > 30) {
+		fontSize = size === 3 ? 22 : size === 4 ? 18 : 16;
+		padding = size === 3 ? 5 : size === 4 ? 4 : 3;
+	} else {
+		fontSize = size === 3 ? 28 : size === 4 ? 22 : 18;
+		padding = size === 3 ? 12 : size === 4 ? 10 : 8;
+	}
+
 	const cellWidth = availableWidth / size;
 	const cellHeight = availableHeight / size;
 
@@ -151,7 +166,7 @@ function generatePDF() {
 		body: tableData,
 		theme: 'grid',
 		styles: {
-			fontSize: size === 3 ? 18 : size === 4 ? 15 : 13,
+			fontSize: fontSize,
 			cellPadding: padding,
 			halign: 'center',
 			valign: 'middle',
@@ -171,7 +186,6 @@ function generatePDF() {
 		didParseCell: function (data) {
 			if (data.cell.raw === 'BINGO') {
 				data.cell.styles.fontStyle = 'normal';
-				// Si on a une image, vider le texte dès le parsing
 				if (uploadedImage) {
 					data.cell.text = '';
 				}
@@ -179,12 +193,10 @@ function generatePDF() {
 		},
 		didDrawCell: function (data) {
 			if (data.cell.raw === 'BINGO' && uploadedImage) {
-				// Calculer la position et la taille de l'image
 				const imgSize = Math.min(data.cell.width, data.cell.height) * 0.7;
 				const imgX = data.cell.x + (data.cell.width - imgSize) / 2;
 				const imgY = data.cell.y + (data.cell.height - imgSize) / 2;
 
-				// Ajouter l'image
 				doc.addImage(uploadedImage, 'PNG', imgX, imgY, imgSize, imgSize);
 			}
 		}
