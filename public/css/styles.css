@@ -3,6 +3,7 @@
 	--card: #ffffff;
 	--primary: #ef4444;
 	--text: #1f2937;
+	--text-btn: #ffffff;
 	--border: #fecaca;
 
 	--warning: #b9681c;
@@ -18,19 +19,20 @@
 }
 
 :root[data-theme='dark'] {
-	--bg: #1f2937;
-	--card: #374151;
-	--primary: #f87171;
-	--text: #f3f4f6;
-	--border: #fca5a5;
+	--bg: #0f0a08;
+	--card: #1a1210;
+	--primary: #ff7849;
+	--text: #fef3ef;
+	--text-btn: #0f0a08;
+	--border: #3d2418;
 
-	--warning: #d97706;
-	--warning-bg: #4b2e0f;
+	--warning: #fb923c;
+	--warning-bg: #2d1810;
 
-	--info: #3b82f6;
-	--info-bg: #1e3a8a;
+	--info: #60a5fa;
+	--info-bg: #1e2940;
 
-	--btn-hover: #ef4444;
+	--btn-hover: #ff9366;
 }
 
 * {
@@ -160,7 +162,7 @@ main {
 
 				input[type="file"]::-webkit-file-upload-button {
 					background: var(--primary);
-					color: var(--text);
+					color: var(--text-btn);
 					border: none;
 					padding: 8px 16px;
 					border-radius: var(--border-radius);
@@ -176,7 +178,7 @@ main {
 
 				input[type="file"]::file-selector-button {
 					background: var(--primary);
-					color: var(--text);
+					color: var(--text-btn);
 					border: none;
 					padding: 8px 16px;
 					border-radius: var(--border-radius);
@@ -218,7 +220,7 @@ main {
 			.download-btn {
 				padding: 12px 20px;
 				background-color: var(--primary);
-				color: var(--text);
+				color: var(--text-btn);
 				border: none;
 				border-radius: var(--border-radius);
 				cursor: pointer;
