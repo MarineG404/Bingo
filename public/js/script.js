@@ -13,10 +13,12 @@ function generateForm(event) {
 	if (event && event.preventDefault) event.preventDefault();
 
 	const size = getGridSize();
+	const bingoCard = document.getElementById('bingo-card');
 	const bingoSection = document.getElementById('bingo-section');
 	const bingoGrid = document.getElementById('bingo-grid');
 
 	bingoGrid.innerHTML = '';
+	bingoCard.style.display = 'block';
 	bingoSection.style.display = 'flex';
 
 	const form = document.createElement('form');
