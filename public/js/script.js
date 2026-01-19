@@ -224,6 +224,12 @@ function generatePDF() {
 		return;
 	}
 
+	// Get title and subtitle with default values
+	const titleInput = document.getElementById('titleInput');
+	const subtitleInput = document.getElementById('subtitleInput');
+	const bingoTitle = titleInput && titleInput.value.trim() ? titleInput.value.trim() : 'BINGO UGA !';
+	const bingoSubtitle = subtitleInput && subtitleInput.value.trim() ? subtitleInput.value.trim() : 'Règles du jeu : Choisir une des deux grilles. Chaque fois qu\'un mot est prononcé, cocher la case, un Bingo peut-être "crié" pour 4 en ligne, en colonne ou en diagonale !';
+
 	const { values, size, center } = result;
 	const tableData = createTableData(values, size, center);
 
@@ -233,15 +239,26 @@ function generatePDF() {
 		format: 'a4'
 	});
 
+	// Title
 	doc.setFontSize(28);
 	doc.setFont(undefined, 'bold');
-	doc.setTextColor(239, 68, 68);
-	doc.text('Bingo Grid!', doc.internal.pageSize.getWidth() / 2, 15, { align: 'center' });
+	doc.setTextColor(239, 68, 68); // #ef4444
+	doc.text(bingoTitle, doc.internal.pageSize.getWidth() / 2, 18, { align: 'center' });
+
+	// Subtitle/Rules - with better spacing and wrapping
+	doc.setFontSize(13);
+	doc.setFont(undefined, 'normal');
+	doc.setTextColor(31, 41, 55); // #1f2937
+	const maxWidth = doc.internal.pageSize.getWidth() - 40; // Leave margins
+	const splitSubtitle = doc.splitTextToSize(bingoSubtitle, maxWidth);
+	doc.text(splitSubtitle, doc.internal.pageSize.getWidth() / 2, 28, { align: 'center' });
 
 	const pageWidth = doc.internal.pageSize.getWidth();
 	const pageHeight = doc.internal.pageSize.getHeight();
 	const horizontalMargin = 20;
-	const startY = 25;
+	// Calculate startY based on subtitle height to ensure enough space
+	const subtitleHeight = splitSubtitle.length * 5; // Approximate line height
+	const startY = 28 + subtitleHeight + 8; // Add extra spacing after subtitle
 
 	const availableWidth = pageWidth - (horizontalMargin * 2);
 	const availableHeight = pageHeight - startY - 20;
@@ -288,6 +305,12 @@ function generatePDF() {
 		},
 		tableWidth: 'wrap',
 		didParseCell: function (data) {
+			if ((data.row.index + data.column.index) % 2 === 0) {
+				data.cell.styles.fillColor = [255, 220, 190]; // Orange/pêche plus visible
+			} else {
+				data.cell.styles.fillColor = [255, 255, 255];
+			}
+
 			if (data.cell.raw === 'BINGO') {
 				data.cell.styles.fontStyle = 'normal';
 				if (uploadedImage) {

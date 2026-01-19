@@ -23,7 +23,6 @@
 		</div>
 
 		<section class="header-container">
-
 			<section class="info">
 				<div class="icon-wrapper">
 					<i class="ri-information-line"></i>
@@ -37,6 +36,18 @@
 				</div>
 			</section>
 
+			<section class="info">
+				<div class="icon-wrapper">
+					<i class="ri-file-list-3-line"></i>
+				</div>
+				<div class="content">
+					<p><strong>Titre par défaut :</strong></p>
+					<p>BINGO UGA !</p>
+					<p><strong>Règles par défaut :</strong></p>
+					<p>Règles du jeu : Choisir une des deux grilles. Chaque fois qu'un mot est prononcé, cocher la case,
+						un Bingo peut-être "crié" pour 4 en ligne, en colonne ou en diagonale !</p>
+				</div>
+			</section>
 		</section>
 
 		<section class="card">
@@ -57,9 +68,7 @@
 			</section>
 		</section>
 		<section class="card" id="bingo-card" style="display:none;">
-
 			<section class="bingo-section" id="bingo-section">
-
 				<section class="form-section">
 					<div>
 						<input type="checkbox" id="random" name="random" checked>
@@ -68,6 +77,17 @@
 					<div class="image-input">
 						<label for="imageInput">Choisir un logo</label>
 						<input type="file" id="imageInput" accept="image/*">
+					</div>
+					<div class="text-inputs">
+						<div class="input-group">
+							<label for="titleInput">Titre du bingo</label>
+							<input type="text" id="titleInput" class="text-input" placeholder="Entrez le titre ici">
+						</div>
+						<div class="input-group">
+							<label for="subtitleInput">Règles</label>
+							<input type="text" id="subtitleInput" class="text-input"
+								placeholder="Entrez les règles ici">
+						</div>
 					</div>
 				</section>
 				<h2><i class="ri-file-list-3-line"></i> Votre grille de bingo</h2>
