@@ -160,16 +160,16 @@ main {
 					color: var(--text);
 				}
 
-				input[type="file"]::-webkit-file-upload-button {
-					background: var(--primary);
-					color: var(--text-btn);
-					border: none;
-					padding: 8px 16px;
+				input[type="file"] {
+					padding: 12px 20px;
+					font-size: 18px;
+					border: 1px solid var(--border);
 					border-radius: var(--border-radius);
+					background: var(--bg);
 					cursor: pointer;
-					margin-right: 12px;
-					font-size: 16px;
-					transition: background-color 0.3s ease;
+					color: var(--text);
+					max-width: 100%;
+					box-sizing: border-box;
 				}
 
 				input[type="file"]::-webkit-file-upload-button:hover {
@@ -355,9 +355,13 @@ footer {
 	}
 
 	main {
+		.header-container {
+			width: 90%;
+		}
 
 		.card {
 			padding: 20px;
+			width: 100%;
 
 			.bingo-section h2 {
 				font-size: 24px;
