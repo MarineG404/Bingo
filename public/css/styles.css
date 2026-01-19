@@ -17,6 +17,22 @@
 	--border-radius-lg: 16px;
 }
 
+:root[data-theme='dark'] {
+	--bg: #1f2937;
+	--card: #374151;
+	--primary: #f87171;
+	--text: #f3f4f6;
+	--border: #fca5a5;
+
+	--warning: #d97706;
+	--warning-bg: #4b2e0f;
+
+	--info: #3b82f6;
+	--info-bg: #1e3a8a;
+
+	--btn-hover: #ef4444;
+}
+
 * {
 	padding: 0;
 	margin: 0;
@@ -59,6 +75,35 @@ main {
 	padding: 0 20px;
 	box-sizing: border-box;
 
+	.top {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 0 10px;
+		box-sizing: border-box;
+		gap: 20px;
+
+		button#theme-toggle {
+			background: var(--card);
+			border: transparent;
+			border-radius: var(--border-radius);
+			padding: 10px;
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: var(--text);
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+			transition: background-color 0.3s ease, color 0.3s ease;
+
+			i {
+				margin: 0;
+				font-size: 24px;
+			}
+		}
+	}
+
 	.card {
 		background: var(--card);
 		padding: 32px;
@@ -86,8 +131,9 @@ main {
 					font-size: 18px;
 					border: 1px solid var(--border);
 					border-radius: var(--border-radius);
-					background: #fff;
+					background: var(--bg);
 					cursor: pointer;
+					color: var(--text);
 				}
 			}
 
@@ -107,14 +153,14 @@ main {
 					font-size: 18px;
 					border: 1px solid var(--border);
 					border-radius: var(--border-radius);
-					background: #fff;
+					background: var(--bg);
 					cursor: pointer;
 					color: var(--text);
 				}
 
 				input[type="file"]::-webkit-file-upload-button {
 					background: var(--primary);
-					color: #fff;
+					color: var(--text);
 					border: none;
 					padding: 8px 16px;
 					border-radius: var(--border-radius);
@@ -130,7 +176,7 @@ main {
 
 				input[type="file"]::file-selector-button {
 					background: var(--primary);
-					color: #fff;
+					color: var(--text);
 					border: none;
 					padding: 8px 16px;
 					border-radius: var(--border-radius);
@@ -162,16 +208,17 @@ main {
 					border: 1px solid var(--border);
 					border-radius: 8px;
 					text-align: center;
-					background: #fff;
+					background: var(--bg);
 					width: 100%;
 					box-sizing: border-box;
+					color: var(--text);
 				}
 			}
 
 			.download-btn {
 				padding: 12px 20px;
 				background-color: var(--primary);
-				color: #fff;
+				color: var(--text);
 				border: none;
 				border-radius: var(--border-radius);
 				cursor: pointer;

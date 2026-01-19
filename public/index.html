@@ -13,7 +13,14 @@
 
 <body>
 	<main>
-		<h1><i class="ri-trophy-line"></i> Bingo</h1>
+		<div class="top">
+			<h1><i class="ri-trophy-line"></i> Bingo</h1>
+
+			<button onclick="toggleTheme()" id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+				<i class="ri-sun-line light-icon"></i>
+				<i class="ri-moon-line dark-icon"></i>
+			</button>
+		</div>
 
 		<section class="header-container">
 
@@ -73,6 +80,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
 
 	<script src="js/script.js?v=1.0.5"></script>
+	<script src="js/theme.js?v=1.0.5"></script>
 
 </body>
 
